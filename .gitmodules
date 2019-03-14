@@ -1,0 +1,3 @@
+[submodule "DoggoFace"]
+	path = DoggoFace
+	url = https://github.com/ingriddraagen/DoggoFace.git
