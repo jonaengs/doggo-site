@@ -1,5 +1,5 @@
 # source: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers
-FROM python:3.7-alpine
+FROM python:3.7
 
 RUN apt-get clean \
     && apt-get -y update
