@@ -5,7 +5,7 @@ RUN apt-get clean \
     && apt-get -y update
 
 RUN apt-get -y install python-dev \
-    && apt-get -y install gunicorn \
+    && apt-get -y install gunicorn
 
 RUN adduser -D doggo
 
