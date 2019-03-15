@@ -6,7 +6,6 @@ RUN apt-get clean \
 
 RUN apt-get -y install python-dev \
     && apt-get -y install gunicorn \
-    && apt-get -y install build-essentials
 
 RUN adduser -D doggo
 
