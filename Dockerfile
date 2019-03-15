@@ -5,6 +5,9 @@ RUN adduser -D doggo
 
 WORKDIR /web/doggo_site/
 
+RUN sudo apt install -y python-dev \
+    && sudo apt install -y gunicorn
+
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
 RUN venv/bin/pip install -r requirements.txt
