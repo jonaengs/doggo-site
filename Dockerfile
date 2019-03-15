@@ -14,5 +14,5 @@ COPY nginx.conf /etc/nginx
 RUN chmod +x ./start.sh
 CMD ["./start.sh"]
 
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+# ENTRYPOINT ["python"]
+# CMD ["app.py"]
