@@ -14,13 +14,15 @@ RUN python -m venv venv
 RUN LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "venv/bin/pip install -r requirements.txt"
 RUN venv/bin/pip install gunicorn pymysql
 
-COPY DoggoFace/* ./Doggoface/
+COPY doggo-site/ ./doggo-site/
+RUN ls -la /files/*
 COPY app.py boot.sh ./
 RUN chmod a+x boot.sh
 
+
 ENV FLASK_APP app.py
 
-RUN chown -R microblog:microblog ./
+RUN chown -R doggo-site:microblog ./
 USER microblog
 
 EXPOSE 5000
