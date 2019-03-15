@@ -1,14 +1,11 @@
 # source: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers
-FROM python:3.7-alpine
+FROM python:3.7
 
 # RUN apt-get clean \
     # && apt-get -y update
 
 # RUN apt-get -y install python-dev \
     # && apt-get -y install gunicorn
-
-RUN apk add python-dev \
-    && apk add zlib
 
 # RUN adduser -D doggo
 
