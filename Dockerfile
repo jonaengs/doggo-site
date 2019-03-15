@@ -10,7 +10,7 @@ WORKDIR /home/microblog
 
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
-RUN LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "pip install -r /requirements.txt"
+RUN LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "pip install -r requirements.txt"
 RUN venv/bin/pip install gunicorn pymysql
 
 COPY app.py boot.sh ./
