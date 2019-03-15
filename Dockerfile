@@ -1,6 +1,8 @@
-FROM python:3.6-alpine
+FROM python:3.7-alpine
 
-RUN apk add --no-cache jpeg-dev zlib-dev
+RUN apk add build-base python-dev py-pip jpeg-dev zlib-dev
+# stop crash when installing pillow
+# ENV LIBRARY_PATH=/lib:/usr/lib
 
 RUN adduser -D microblog
 
@@ -8,7 +10,7 @@ WORKDIR /home/microblog
 
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
-RUN venv/bin/pip install -r requirements.txt
+RUN LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "pip install -r /requirements.txt"
 RUN venv/bin/pip install gunicorn pymysql
 
 COPY app.py boot.sh ./
