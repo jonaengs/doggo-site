@@ -1,12 +1,17 @@
 # source: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers
 FROM python:3.7-alpine
 
+RUN apt-get clean \
+    && apt-get -y update
+
+RUN apt-get -y install python-dev \
+    && apt-get -y install gunicorn \
+    && apt-get -y install build-essentials
+
 RUN adduser -D doggo
 
 WORKDIR /web/doggo_site/
 
-RUN apt-get -y install python-dev \
-    && apt-get -y install gunicorn
 
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
