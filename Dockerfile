@@ -22,7 +22,7 @@ RUN chmod a+x boot.sh
 
 ENV FLASK_APP app.py
 
-RUN chown -R doggo-site:microblog ./
+RUN chown -R microblog:microblog ./
 USER microblog
 
 EXPOSE 5000
