@@ -7,6 +7,9 @@ FROM python:3.7-alpine
 # RUN apt-get -y install python-dev \
     # && apt-get -y install gunicorn
 
+RUN apk add python-dev \
+    && apk add zlib
+
 # RUN adduser -D doggo
 
 WORKDIR /web/doggo_site/
