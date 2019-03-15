@@ -1,11 +1,11 @@
 # source: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers
 FROM python:3.7
 
-RUN apt-get clean \
-    && apt-get -y update
+# RUN apt-get clean \
+    # && apt-get -y update
 
-RUN apt-get -y install python-dev \
-    && apt-get -y install gunicorn
+# RUN apt-get -y install python-dev \
+    # && apt-get -y install gunicorn
 
 # RUN adduser -D doggo
 
@@ -16,7 +16,7 @@ RUN python -m venv venv
 RUN venv/bin/pip install -r requirements.txt
 RUN venv/bin/pip install gunicorn
 
-COPY app app
+# COPY app app
 COPY app.py boot.sh ./
 RUN chmod +x boot.sh
 
