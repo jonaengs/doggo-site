@@ -6,11 +6,11 @@ RUN apk add build-base python-dev py-pip jpeg-dev zlib-dev
 
 RUN adduser -D microblog
 
-WORKDIR /home/microblog
+WORKDIR /web/doggo-site/
 
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
-RUN LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "venv/bin/pip install install -r requirements.txt"
+RUN LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "venv/bin/pip install -r requirements.txt"
 RUN venv/bin/pip install gunicorn pymysql
 
 COPY app.py boot.sh ./
