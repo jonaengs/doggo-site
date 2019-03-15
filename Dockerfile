@@ -1,19 +1,23 @@
-FROM python:3.7-slim
-COPY . /app
-WORKDIR /app
-RUN apt-get clean \
-    && apt-get -y update
+# source: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers
+FROM python:3.7-alpine
 
-RUN apt-get -y install nginx \
-    && apt-get -y install uwsgi \
-    && apt-get -y install python3-dev \
-    && apt-get -y install build-essential
-RUN pip install pipenv
-RUN pipenv install
+RUN adduser -D doggo
 
-COPY nginx.conf /etc/nginx
-RUN chmod +x ./start.sh
-CMD ["./start.sh"]
+WORKDIR /web/doggo_site/
 
-# ENTRYPOINT ["python"]
-# CMD ["app.py"]
+COPY requirements.txt requirements.txt
+RUN python -m venv venv
+RUN venv/bin/pip install -r requirements.txt
+RUN venv/bin/pip install gunicorn
+
+COPY app app
+COPY app.py boot.sh ./
+RUN chmod +x boot.sh
+
+ENV FLASK_APP app.py
+
+RUN chown -R app:doggo ./
+USER doggo
+
+EXPOSE 5000
+ENTRYPOINT ["./boot.sh"]
