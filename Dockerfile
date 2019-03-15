@@ -1,8 +1,7 @@
 FROM python:3.7-alpine
 
+# necessary for pillow install? (zlib-dev is at least)
 RUN apk add build-base python-dev py-pip jpeg-dev zlib-dev
-# stop crash when installing pillow
-# ENV LIBRARY_PATH=/lib:/usr/lib
 
 RUN adduser -D microblog
 
@@ -10,6 +9,8 @@ WORKDIR /web/doggo-site/
 
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
+
+# Necessary for pillow install
 RUN LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "venv/bin/pip install -r requirements.txt"
 RUN venv/bin/pip install gunicorn pymysql
 
