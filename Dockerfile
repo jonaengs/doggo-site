@@ -7,10 +7,9 @@ RUN apt-get clean \
 RUN apt-get -y install python-dev \
     && apt-get -y install gunicorn
 
-RUN adduser -D doggo
+# RUN adduser -D doggo
 
 WORKDIR /web/doggo_site/
-
 
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
@@ -23,8 +22,8 @@ RUN chmod +x boot.sh
 
 ENV FLASK_APP app.py
 
-RUN chown -R app:doggo ./
-USER doggo
+# RUN chown -R app:doggo ./
+# USER doggo
 
 EXPOSE 5000
 ENTRYPOINT ["./boot.sh"]
