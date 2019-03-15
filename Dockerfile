@@ -1,30 +1,23 @@
-# source: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers
-FROM python:3.7
+FROM python:3.6-alpine
 
-# RUN apt-get clean \
-    # && apt-get -y update
+RUN apk add --no-cache jpeg-dev zlib-dev
 
-# RUN apt-get -y install python-dev \
-    # && apt-get -y install gunicorn
+RUN adduser -D microblog
 
-# RUN adduser -D doggo
-
-WORKDIR /web/doggo_site/
+WORKDIR /home/microblog
 
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
 RUN venv/bin/pip install -r requirements.txt
-RUN venv/bin/pip install gunicorn
+RUN venv/bin/pip install gunicorn pymysql
 
-# COPY app app
 COPY app.py boot.sh ./
-RUN chmod +x boot.sh
+RUN chmod a+x boot.sh
 
 ENV FLASK_APP app.py
 
-# RUN chown -R app:doggo ./
-# USER doggo
+RUN chown -R microblog:microblog ./
+USER microblog
 
 EXPOSE 5000
-# ENTRYPOINT ["./boot.sh"]
-CMD ["./boot.sh"]
+ENTRYPOINT ["./boot.sh"]
