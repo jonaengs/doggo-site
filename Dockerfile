@@ -15,8 +15,6 @@ RUN LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "venv/bin/pip install -r requirements.
 RUN venv/bin/pip install gunicorn pymysql
 
 COPY . .
-RUN ls -la
-# COPY app.py boot.sh ./
 RUN chmod a+x boot.sh
 
 
