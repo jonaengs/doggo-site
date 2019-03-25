@@ -21,3 +21,6 @@ to restart a container after making changes:
     docker container rm doggo
     
 then repeat above steps
+
+
+note that server only runs on port 8000 atm
