@@ -9,11 +9,11 @@ then run these two commands from the top-level directory of the project
 
     docker build -t doggo:latest .
     
-    docker run --name doggo -d -p 8000:5000 --rm doggo:latest # names the container for easier debugging etc
+    docker run --name doggo -d -p 80:5000 --rm doggo:latest # names the container for easier debugging etc
 
 if things start crashing run this command instead, it will print the logs directly to the terminal
 
-    docker run --name doggo -i -p 8000:5000 doggo:latest
+    docker run --name doggo -i -p 80:5000 doggo:latest
 
 to restart a container after making changes:
 
@@ -23,4 +23,4 @@ to restart a container after making changes:
 then repeat above steps
 
 
-note that server only runs on port 8000 atm
+Because the docker container runs on port 80 the site probably wont work with https, as that runs on 443
