@@ -17,9 +17,11 @@ Then run
 
 Second: install docker-stuff
 
+<h3>Non-docker-compose setup: </h3>
+
 then run these two commands from the top-level directory of the project
 
-    docker build -t doggo:latest .
+    docker build -t doggo-site:latest .
     
     docker run --name doggo -d -p 80:5000 --rm doggo:latest # names the container for easier debugging etc
 
@@ -34,5 +36,8 @@ to restart a container after making changes:
     
 then repeat above steps
 
+<h3>Yes-docker-compose setup: </h3>
+
+    docker-compose up
 
 Because the docker container runs on port 80 the site probably wont work with https, as that runs on 443
