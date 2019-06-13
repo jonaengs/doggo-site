@@ -1,20 +1,18 @@
-Many thanks to:
-    https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers
-    for the help. Couldn't have done it without him + a dozen other internet strangers with who had encountered
-    similar issues to mine
+<h2>Many thanks to:</h2>
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers
+for the help. Couldn't have done it without him + a dozen other internet strangers with who had encountered
+similar issues to mine
 
-    and for nginx ssl stuff:
-    https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
+and for nginx ssl stuff:
+https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 
-First: Enter email address into 
-    email=""
-and set 
-    staging=0
-in init_letsencrypt.sh
+<h2>Setup:</h2>
+
+First: Enter email address into `email=""` and set `staging=0` in init_letsencrypt.sh
 
 Then run
+
     chmod +x init-letsencrypt.sh 
-and
     sudo ./init-letsencrypt.sh.
 
 Second: install docker-stuff
